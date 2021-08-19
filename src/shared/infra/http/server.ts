@@ -1,8 +1,11 @@
+import 'reflect-metadata';
 import express from 'express';
+import createConnection from 'shared/infra/typeorm';
 import swaggerUi from 'swagger-ui-express';
 
 import swaggerFile from '../../../../swagger.json';
 
+createConnection();
 const app = express();
 
 app.use(express.json());
