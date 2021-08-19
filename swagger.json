@@ -1,0 +1,11 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ROAdvAPI Documentation",
+    "description": "Resende Oliveira Lawyers API",
+    "version": "1.0.0",
+    "contact": {
+      "email": "junioresende23@gmail.com"
+    }
+  }
+}

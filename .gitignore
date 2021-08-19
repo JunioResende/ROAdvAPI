@@ -3,3 +3,12 @@ node_modules/
 .vscode/
 
 dist/
+
+.env
+
+ormconfig.json5
+
+tmp/**
+!tmp/.gitkeep
+
+yarn.lock
