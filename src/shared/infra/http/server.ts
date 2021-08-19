@@ -3,6 +3,8 @@ import express from 'express';
 import createConnection from 'shared/infra/typeorm';
 import swaggerUi from 'swagger-ui-express';
 
+import '@shared/container';
+
 import swaggerFile from '../../../../swagger.json';
 
 createConnection();
