@@ -8,6 +8,8 @@ dist
 
 ormconfig.json
 
+request.json
+
 tmp/**
 !tmp/.gitkeep
 

@@ -9,11 +9,14 @@ import '@shared/container';
 import { AppError } from '@shared/errors/AppError';
 
 import swaggerFile from '../../../../swagger.json';
+import { routes } from './routes';
 
 createConnection();
 const app = express();
 
 app.use(express.json());
+
+app.use(routes);
 
 app.use('/ROAdvAPI-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 

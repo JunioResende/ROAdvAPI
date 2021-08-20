@@ -37,12 +37,44 @@ export class createUsersTable1629474862980 implements MigrationInterface {
             type: 'numeric',
           },
           {
+            name: 'telephone',
+            type: 'varchar',
+          },
+          {
             name: 'email',
             type: 'varchar',
             isUnique: true,
           },
           {
             name: 'password',
+            type: 'varchar',
+          },
+          {
+            name: 'cep',
+            type: 'varchar',
+          },
+          {
+            name: 'street',
+            type: 'varchar',
+          },
+          {
+            name: 'number',
+            type: 'varchar',
+          },
+          {
+            name: 'complement',
+            type: 'varchar',
+          },
+          {
+            name: 'district',
+            type: 'varchar',
+          },
+          {
+            name: 'city',
+            type: 'varchar',
+          },
+          {
+            name: 'uf',
             type: 'varchar',
           },
           {

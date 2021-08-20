@@ -1,17 +1,25 @@
 interface ICreateUserDto {
-  id: string;
+  id?: string;
   name: string;
   cpf: string;
   rg: string;
   organ: string;
   birthDate: string;
   age: number;
+  telephone: string;
   email: string;
   password: string;
-  userSuperAdmin: boolean;
-  userAdmin: boolean;
+  cep: string;
+  street: string;
+  number: string;
+  complement: string;
+  district: string;
+  city: string;
+  uf: string;
+  userSuperAdmin?: boolean;
+  userAdmin?: boolean;
   biography: string;
-  avatar: string;
+  avatar?: string;
 }
 
 export { ICreateUserDto };

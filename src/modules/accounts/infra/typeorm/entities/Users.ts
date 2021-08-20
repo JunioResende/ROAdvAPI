@@ -31,10 +31,34 @@ class Users {
   age: number;
 
   @Column()
+  telephone: string;
+
+  @Column()
   email: string;
 
   @Column()
   password: string;
+
+  @Column()
+  cep: string;
+
+  @Column()
+  street: string;
+
+  @Column()
+  number: string;
+
+  @Column()
+  complement: string;
+
+  @Column()
+  district: string;
+
+  @Column()
+  city: string;
+
+  @Column()
+  uf: string;
 
   @Column()
   userSuperAdmin: boolean;
