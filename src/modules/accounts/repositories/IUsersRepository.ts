@@ -26,6 +26,8 @@ interface IUsersRepository {
     avatar,
   }: ICreateUserDto): Promise<void>;
 
+  findById(id: string): Promise<Users>;
+
   findByCpf(cpf: string): Promise<Users>;
 
   findByEmail(email: string): Promise<Users>;
