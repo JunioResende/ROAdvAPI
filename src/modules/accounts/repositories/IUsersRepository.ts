@@ -1,4 +1,5 @@
 import { ICreateUserDto } from '../dtos/ICreateUserDTO';
+import { Users } from '../infra/typeorm/entities/Users';
 
 interface IUsersRepository {
   create({
@@ -24,6 +25,10 @@ interface IUsersRepository {
     biography,
     avatar,
   }: ICreateUserDto): Promise<void>;
+
+  findByCpf(cpf: string): Promise<Users>;
+
+  findByEmail(email: string): Promise<Users>;
 }
 
 export { IUsersRepository };

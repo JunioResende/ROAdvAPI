@@ -11,6 +11,7 @@ class UsersRepository implements IUsersRepository {
   constructor() {
     this.repository = getRepository(Users);
   }
+
   async create({
     id,
     name,
@@ -59,6 +60,18 @@ class UsersRepository implements IUsersRepository {
     });
 
     await this.repository.save(user);
+  }
+
+  async findByCpf(cpf: string): Promise<Users> {
+    const user = await this.repository.findOne({ cpf });
+
+    return user;
+  }
+
+  async findByEmail(email: string): Promise<Users> {
+    const user = await this.repository.findOne({ email });
+
+    return user;
   }
 }
 
