@@ -62,6 +62,7 @@ export class createUsersTable1629474862980 implements MigrationInterface {
           {
             name: 'avatar',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'created_at',
