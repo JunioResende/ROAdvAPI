@@ -1,3 +1,4 @@
+import { hash } from 'bcryptjs';
 import { inject, injectable } from 'tsyringe';
 
 import { ICreateUserDto } from '@modules/accounts/dtos/ICreateUserDTO';
@@ -44,6 +45,8 @@ class CreateUserUseCase {
       throw new AppError('There is a user registered with this email');
     }
 
+    const hashPassword = await hash(password, 8);
+
     await this.usersRepository.create({
       name,
       cpf,
@@ -53,7 +56,7 @@ class CreateUserUseCase {
       age,
       telephone,
       email,
-      password,
+      password: hashPassword,
       cep,
       street,
       number,
