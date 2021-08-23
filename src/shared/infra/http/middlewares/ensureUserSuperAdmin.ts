@@ -15,7 +15,7 @@ export async function ensureSuperUserAdmin(
   const user = await usersRepository.findById(id);
 
   if (!user.userSuperAdmin) {
-    throw new AppError('This user is not superUserAdmin!');
+    throw new AppError('This user is not userSuperAdmin!');
   }
 
   return next();
