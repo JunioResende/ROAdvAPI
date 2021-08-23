@@ -30,6 +30,8 @@ interface IUsersRepository {
   findByCpf(cpf: string): Promise<Users>;
 
   findByEmail(email: string): Promise<Users>;
+
+  deleteUserAvatar(id: string, avatar: string): Promise<void>;
 }
 
 export { IUsersRepository };

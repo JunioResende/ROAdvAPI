@@ -77,6 +77,15 @@ class UsersRepository implements IUsersRepository {
 
     return user;
   }
+
+  async deleteUserAvatar(id: string, avatar: string): Promise<void> {
+    await this.repository
+      .createQueryBuilder()
+      .update({ avatar })
+      .where('id = :id')
+      .setParameters({ id })
+      .execute();
+  }
 }
 
 export { UsersRepository };
