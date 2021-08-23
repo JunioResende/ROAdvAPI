@@ -11,7 +11,7 @@ class FindUserController {
 
     const user = await findUserUseCase.execute({ name: name as string });
 
-    return response.json(user);
+    return response.status(200).json(user);
   }
 }
 

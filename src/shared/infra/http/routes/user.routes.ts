@@ -5,6 +5,7 @@ import uploadConfig from '@config/upload/upload';
 import { CreateUserController } from '@modules/accounts/useCases/createUser/CreateUserController';
 import { DeleteUserAvatarController } from '@modules/accounts/useCases/deleteUserAvatar/DeleteUserAvatarController';
 import { FindUserController } from '@modules/accounts/useCases/findUser/FindUserController';
+import { ListUserController } from '@modules/accounts/useCases/listUser/ListUserController';
 import { UploadUserAvatarController } from '@modules/accounts/useCases/uploadUserAvatar/UploadUserAvatarController';
 
 import { ensureAuth } from '../middlewares/ensureAuth';
@@ -23,6 +24,7 @@ const deleteUserAvatarController = new DeleteUserAvatarController();
 
 // Find / List / Show User Profile
 const findUserController = new FindUserController();
+const listUserController = new ListUserController();
 
 // Routes
 
@@ -48,6 +50,13 @@ usersRoutes.get(
   ensureAuth,
   ensureSuperUserAdmin,
   findUserController.handle,
+);
+
+usersRoutes.get(
+  '/listUser/:id',
+  ensureAuth,
+  ensureSuperUserAdmin,
+  listUserController.handle,
 );
 
 export { usersRoutes };
