@@ -47,6 +47,7 @@ usersRoutes.delete(
   deleteUserAvatarController.handle,
 );
 
+// Find / List / Show User Profile
 usersRoutes.get(
   '/findUser',
   ensureAuth,
