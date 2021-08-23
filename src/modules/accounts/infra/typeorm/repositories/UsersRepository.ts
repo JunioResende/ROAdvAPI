@@ -86,6 +86,18 @@ class UsersRepository implements IUsersRepository {
       .setParameters({ id })
       .execute();
   }
+
+  async findUser(name: string): Promise<Users> {
+    const userQuery = this.repository.createQueryBuilder('C');
+
+    if (name) {
+      userQuery.andWhere('name = :name', { name });
+    }
+
+    const user = this.repository.findOne({ name });
+
+    return user;
+  }
 }
 
 export { UsersRepository };

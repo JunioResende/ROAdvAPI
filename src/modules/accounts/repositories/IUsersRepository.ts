@@ -32,6 +32,8 @@ interface IUsersRepository {
   findByEmail(email: string): Promise<Users>;
 
   deleteUserAvatar(id: string, avatar: string): Promise<void>;
+
+  findUser(name: string): Promise<Users>;
 }
 
 export { IUsersRepository };
