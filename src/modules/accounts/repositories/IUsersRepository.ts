@@ -8,7 +8,6 @@ interface IUsersRepository {
     cpf,
     rg,
     organ,
-    birthDate,
     age,
     telephone,
     email,

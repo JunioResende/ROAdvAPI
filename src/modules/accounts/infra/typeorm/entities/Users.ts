@@ -25,9 +25,6 @@ class Users {
   organ: string;
 
   @Column()
-  birthDate: string;
-
-  @Column()
   age: number;
 
   @Column()

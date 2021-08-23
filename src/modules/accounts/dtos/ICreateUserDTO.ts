@@ -4,7 +4,6 @@ interface ICreateUserDto {
   cpf: string;
   rg: string;
   organ: string;
-  birthDate: string;
   age: number;
   telephone: string;
   email: string;
