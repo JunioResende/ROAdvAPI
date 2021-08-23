@@ -6,6 +6,7 @@ import { CreateUserController } from '@modules/accounts/useCases/createUser/Crea
 import { DeleteUserAvatarController } from '@modules/accounts/useCases/deleteUserAvatar/DeleteUserAvatarController';
 import { FindUserController } from '@modules/accounts/useCases/findUser/FindUserController';
 import { ListUserController } from '@modules/accounts/useCases/listUser/ListUserController';
+import { ShowUserProfileController } from '@modules/accounts/useCases/showUserProfile/ShowUserProfileController';
 import { UploadUserAvatarController } from '@modules/accounts/useCases/uploadUserAvatar/UploadUserAvatarController';
 
 import { ensureAuth } from '../middlewares/ensureAuth';
@@ -25,6 +26,7 @@ const deleteUserAvatarController = new DeleteUserAvatarController();
 // Find / List / Show User Profile
 const findUserController = new FindUserController();
 const listUserController = new ListUserController();
+const showUserProfileController = new ShowUserProfileController();
 
 // Routes
 
@@ -57,6 +59,12 @@ usersRoutes.get(
   ensureAuth,
   ensureSuperUserAdmin,
   listUserController.handle,
+);
+
+usersRoutes.get(
+  '/showUserProfile',
+  ensureAuth,
+  showUserProfileController.handle,
 );
 
 export { usersRoutes };

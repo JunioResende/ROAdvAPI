@@ -1,4 +1,4 @@
-interface IListUserResponseDTO {
+interface IShowUserProfileDTO {
   id: string;
   name: string;
   cpf: string;
@@ -14,12 +14,8 @@ interface IListUserResponseDTO {
   district: string;
   city: string;
   uf: string;
-  userSuperAdmin: boolean;
-  userAdmin: boolean;
   biography: string;
   avatar: string;
-  created_at: Date;
-  updated_at: Date;
 }
 
-export { IListUserResponseDTO };
+export { IShowUserProfileDTO };
