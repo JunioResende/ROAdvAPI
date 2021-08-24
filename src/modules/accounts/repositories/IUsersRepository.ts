@@ -60,6 +60,8 @@ interface IUsersRepository {
   turnUserNotAdmin(id: string, userAdmin: boolean): Promise<void>;
 
   turnSuperUserAdmin(id: string, userSuperAdmin: boolean): Promise<void>;
+
+  turnNotSuperUserAdmin(id: string, userSuperAdmin: boolean): Promise<void>;
 }
 
 export { IUsersRepository };

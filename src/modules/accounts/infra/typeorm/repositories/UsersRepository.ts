@@ -168,6 +168,18 @@ class UsersRepository implements IUsersRepository {
       .setParameters({ id })
       .execute();
   }
+
+  async turnNotSuperUserAdmin(
+    id: string,
+    userSuperAdmin: boolean,
+  ): Promise<void> {
+    await this.repository
+      .createQueryBuilder()
+      .update({ userSuperAdmin })
+      .where('id = :id')
+      .setParameters({ id })
+      .execute();
+  }
 }
 
 export { UsersRepository };

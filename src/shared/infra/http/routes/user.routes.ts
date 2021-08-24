@@ -7,6 +7,7 @@ import { DeleteUserAvatarController } from '@modules/accounts/useCases/deleteUse
 import { FindUserController } from '@modules/accounts/useCases/findUser/FindUserController';
 import { ListUserController } from '@modules/accounts/useCases/listUser/ListUserController';
 import { ShowUserProfileController } from '@modules/accounts/useCases/showUserProfile/ShowUserProfileController';
+import { TurnNotSuperUserAdminController } from '@modules/accounts/useCases/turnNotSuperUserAdmin/TurnNotSuperUserAdminController';
 import { TurnSuperUserAdminController } from '@modules/accounts/useCases/turnSuperUserAdmin/TurnSuperUserAdminController';
 import { TurnUserAdminController } from '@modules/accounts/useCases/turnUserAdmin/TurnUserAdminController';
 import { TurnUserNotAdminController } from '@modules/accounts/useCases/turnUserNotAdmin/TurnUserNotAdminController';
@@ -39,6 +40,7 @@ const updateUserController = new UpdateUserController();
 const turnUserAdminController = new TurnUserAdminController();
 const turnUserNotAdminController = new TurnUserNotAdminController();
 const turnSuperUserAdminController = new TurnSuperUserAdminController();
+const turnNotSuperUserAdminController = new TurnNotSuperUserAdminController();
 
 // Routes
 
@@ -103,6 +105,13 @@ usersRoutes.patch(
   ensureAuth,
   ensureSuperUserAdmin,
   turnSuperUserAdminController.handle,
+);
+
+usersRoutes.patch(
+  '/turnNotSuperUserAdmin/:id',
+  ensureAuth,
+  ensureSuperUserAdmin,
+  turnNotSuperUserAdminController.handle,
 );
 
 export { usersRoutes };
