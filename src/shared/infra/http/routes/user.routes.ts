@@ -7,6 +7,7 @@ import { DeleteUserAvatarController } from '@modules/accounts/useCases/deleteUse
 import { FindUserController } from '@modules/accounts/useCases/findUser/FindUserController';
 import { ListUserController } from '@modules/accounts/useCases/listUser/ListUserController';
 import { ShowUserProfileController } from '@modules/accounts/useCases/showUserProfile/ShowUserProfileController';
+import { TurnUserAdminController } from '@modules/accounts/useCases/turnUserAdmin/TurnUserAdminController';
 import { UpdateUserController } from '@modules/accounts/useCases/updateUser/UpdateUserController';
 import { UploadUserAvatarController } from '@modules/accounts/useCases/uploadUserAvatar/UploadUserAvatarController';
 
@@ -31,6 +32,9 @@ const showUserProfileController = new ShowUserProfileController();
 
 // Update User
 const updateUserController = new UpdateUserController();
+
+// Permissions
+const turnUserAdminController = new TurnUserAdminController();
 
 // Routes
 
@@ -66,13 +70,21 @@ usersRoutes.get(
   listUserController.handle,
 );
 
-// Update User
 usersRoutes.get(
   '/showUserProfile',
   ensureAuth,
   showUserProfileController.handle,
 );
 
+// Update User
 usersRoutes.put('/updateUser', ensureAuth, updateUserController.handle);
+
+// Permissions
+usersRoutes.patch(
+  '/turnUserAdmin/:id',
+  ensureAuth,
+  ensureSuperUserAdmin,
+  turnUserAdminController.handle,
+);
 
 export { usersRoutes };
