@@ -29,6 +29,7 @@ const findUserController = new FindUserController();
 const listUserController = new ListUserController();
 const showUserProfileController = new ShowUserProfileController();
 
+// Update User
 const updateUserController = new UpdateUserController();
 
 // Routes
@@ -65,6 +66,7 @@ usersRoutes.get(
   listUserController.handle,
 );
 
+// Update User
 usersRoutes.get(
   '/showUserProfile',
   ensureAuth,
