@@ -150,6 +150,15 @@ class UsersRepository implements IUsersRepository {
       .setParameters({ id })
       .execute();
   }
+
+  async turnUserNotAdmin(id: string, userAdmin: boolean): Promise<void> {
+    await this.repository
+      .createQueryBuilder()
+      .update({ userAdmin })
+      .where('id = :id')
+      .setParameters({ id })
+      .execute();
+  }
 }
 
 export { UsersRepository };

@@ -8,6 +8,7 @@ import { FindUserController } from '@modules/accounts/useCases/findUser/FindUser
 import { ListUserController } from '@modules/accounts/useCases/listUser/ListUserController';
 import { ShowUserProfileController } from '@modules/accounts/useCases/showUserProfile/ShowUserProfileController';
 import { TurnUserAdminController } from '@modules/accounts/useCases/turnUserAdmin/TurnUserAdminController';
+import { TurnUserNotAdminController } from '@modules/accounts/useCases/turnUserNotAdmin/TurnUserNotAdminController';
 import { UpdateUserController } from '@modules/accounts/useCases/updateUser/UpdateUserController';
 import { UploadUserAvatarController } from '@modules/accounts/useCases/uploadUserAvatar/UploadUserAvatarController';
 
@@ -35,6 +36,7 @@ const updateUserController = new UpdateUserController();
 
 // Permissions
 const turnUserAdminController = new TurnUserAdminController();
+const turnUserNotAdminController = new TurnUserNotAdminController();
 
 // Routes
 
@@ -85,6 +87,13 @@ usersRoutes.patch(
   ensureAuth,
   ensureSuperUserAdmin,
   turnUserAdminController.handle,
+);
+
+usersRoutes.patch(
+  '/turnUserNotAdmin/:id',
+  ensureAuth,
+  ensureSuperUserAdmin,
+  turnUserNotAdminController.handle,
 );
 
 export { usersRoutes };

@@ -56,6 +56,8 @@ interface IUsersRepository {
   }: IUpdateUserDTO): Promise<void>;
 
   turnUserAdmin(id: string, userAdmin: boolean): Promise<void>;
+
+  turnUserNotAdmin(id: string, userAdmin: boolean): Promise<void>;
 }
 
 export { IUsersRepository };
