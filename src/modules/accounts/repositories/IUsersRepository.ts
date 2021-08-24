@@ -1,4 +1,5 @@
 import { ICreateUserDto } from '../dtos/ICreateUserDTO';
+import { IUpdateUserDTO } from '../dtos/IUpdateUserDTO';
 import { Users } from '../infra/typeorm/entities/Users';
 
 interface IUsersRepository {
@@ -34,6 +35,25 @@ interface IUsersRepository {
   deleteUserAvatar(id: string, avatar: string): Promise<void>;
 
   findUser(name: string): Promise<Users>;
+
+  updateUser({
+    id,
+    name,
+    cpf,
+    rg,
+    organ,
+    age,
+    telephone,
+    email,
+    cep,
+    street,
+    number,
+    complement,
+    district,
+    city,
+    uf,
+    biography,
+  }: IUpdateUserDTO): Promise<void>;
 }
 
 export { IUsersRepository };

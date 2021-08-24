@@ -1,6 +1,7 @@
 import { getRepository, Repository } from 'typeorm';
 
 import { ICreateUserDto } from '@modules/accounts/dtos/ICreateUserDTO';
+import { IUpdateUserDTO } from '@modules/accounts/dtos/IUpdateUserDTO';
 import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
 
 import { Users } from '../entities/Users';
@@ -97,6 +98,48 @@ class UsersRepository implements IUsersRepository {
     const user = this.repository.findOne({ name });
 
     return user;
+  }
+
+  async updateUser({
+    id,
+    name,
+    cpf,
+    rg,
+    organ,
+    age,
+    telephone,
+    email,
+    cep,
+    street,
+    number,
+    complement,
+    district,
+    city,
+    uf,
+    biography,
+  }: IUpdateUserDTO): Promise<void> {
+    await this.repository
+      .createQueryBuilder()
+      .update({
+        name,
+        cpf,
+        rg,
+        organ,
+        age,
+        telephone,
+        email,
+        cep,
+        street,
+        number,
+        complement,
+        district,
+        city,
+        uf,
+        biography,
+      })
+      .where('id = :id')
+      .setParameters({ id })
+      .execute();
   }
 }
 

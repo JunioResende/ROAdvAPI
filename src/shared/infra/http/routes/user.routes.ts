@@ -7,6 +7,7 @@ import { DeleteUserAvatarController } from '@modules/accounts/useCases/deleteUse
 import { FindUserController } from '@modules/accounts/useCases/findUser/FindUserController';
 import { ListUserController } from '@modules/accounts/useCases/listUser/ListUserController';
 import { ShowUserProfileController } from '@modules/accounts/useCases/showUserProfile/ShowUserProfileController';
+import { UpdateUserController } from '@modules/accounts/useCases/updateUser/UpdateUserController';
 import { UploadUserAvatarController } from '@modules/accounts/useCases/uploadUserAvatar/UploadUserAvatarController';
 
 import { ensureAuth } from '../middlewares/ensureAuth';
@@ -27,6 +28,8 @@ const deleteUserAvatarController = new DeleteUserAvatarController();
 const findUserController = new FindUserController();
 const listUserController = new ListUserController();
 const showUserProfileController = new ShowUserProfileController();
+
+const updateUserController = new UpdateUserController();
 
 // Routes
 
@@ -67,5 +70,7 @@ usersRoutes.get(
   ensureAuth,
   showUserProfileController.handle,
 );
+
+usersRoutes.put('/updateUser', ensureAuth, updateUserController.handle);
 
 export { usersRoutes };
