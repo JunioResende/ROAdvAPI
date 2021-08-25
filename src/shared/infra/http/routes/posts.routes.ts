@@ -4,6 +4,7 @@ import multer from 'multer';
 import uploadConfig from '@config/upload/upload';
 import { CreatePostController } from '@modules/posts/useCases/createPost/CreatePostController';
 import { FindPostsController } from '@modules/posts/useCases/findPosts/FindPostsController';
+import { ShowPostController } from '@modules/posts/useCases/showPost/ShowPostController';
 import { UploadImagesOfThePostsController } from '@modules/posts/useCases/uploadImageOfThePosts/UploadImagesOfThePostsController';
 
 import { ensureAuth } from '../middlewares/ensureAuth';
@@ -21,6 +22,8 @@ const findPostsController = new FindPostsController();
 
 const uploadImagesOfThePostsController = new UploadImagesOfThePostsController();
 
+const showPostController = new ShowPostController();
+
 postsRoutes.post('/', ensureAuth, ensureUserAdmin, createPostController.handle);
 
 postsRoutes.get(
@@ -37,5 +40,7 @@ postsRoutes.post(
   uploadImagesOfThePosts.array('imageOfThePosts'),
   uploadImagesOfThePostsController.handle,
 );
+
+postsRoutes.get('/showPost/:id', showPostController.handle);
 
 export { postsRoutes };
