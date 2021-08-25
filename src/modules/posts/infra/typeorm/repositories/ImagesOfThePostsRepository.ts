@@ -11,8 +11,8 @@ class ImagesOfThePostsRepository implements IImagesOfThePostsRepository {
     this.repository = getRepository(ImagesOfThePosts);
   }
 
-  async create(imagesOfThePosts: string, postID: string): Promise<void> {
-    const image = this.repository.create({ imagesOfThePosts, postID });
+  async create(imagesOfThePosts: string, post_id: string): Promise<void> {
+    const image = this.repository.create({ imagesOfThePosts, post_id });
     await this.repository.save(image);
   }
 }

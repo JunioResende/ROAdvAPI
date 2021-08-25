@@ -17,7 +17,7 @@ export class createImagesPostsTable1629906965657 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: 'postID',
+            name: 'post_id',
             type: 'uuid',
           },
           {
@@ -36,7 +36,7 @@ export class createImagesPostsTable1629906965657 implements MigrationInterface {
             name: 'FKPostIDToImagePosts',
             referencedTableName: 'posts',
             referencedColumnNames: ['id'],
-            columnNames: ['postID'],
+            columnNames: ['post_id'],
             onDelete: 'SET NULL',
             onUpdate: 'SET NULL',
           },

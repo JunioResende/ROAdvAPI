@@ -20,7 +20,7 @@ class UploadImagesOfThePostsController {
     const imagesOfThePosts = images.map(file => file.filename);
 
     await uploadImagesOfThePostsUseCase.execute({
-      postID: id,
+      post_id: id,
       imagesOfThePosts,
     });
 

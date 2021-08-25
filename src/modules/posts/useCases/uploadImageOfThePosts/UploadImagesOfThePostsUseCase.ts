@@ -12,10 +12,10 @@ class UploadImagesOfThePostsUseCase {
 
   async execute({
     imagesOfThePosts,
-    postID,
+    post_id,
   }: IUploadImagesOfThePostsDTO): Promise<void> {
     imagesOfThePosts.map(async image => {
-      await this.imagesOfThePostsRepository.create(image, postID);
+      await this.imagesOfThePostsRepository.create(image, post_id);
     });
   }
 }

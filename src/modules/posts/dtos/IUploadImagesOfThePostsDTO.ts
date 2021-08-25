@@ -1,7 +1,7 @@
 interface IUploadImagesOfThePostsDTO {
   id?: string;
   imagesOfThePosts: string[];
-  postID: string;
+  post_id: string;
 }
 
 export { IUploadImagesOfThePostsDTO };

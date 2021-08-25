@@ -1,5 +1,5 @@
 interface IImagesOfThePostsRepository {
-  create(imagesOfThePosts: string, postID: string): Promise<void>;
+  create(imagesOfThePosts: string, post_id: string): Promise<void>;
 }
 
 export { IImagesOfThePostsRepository };

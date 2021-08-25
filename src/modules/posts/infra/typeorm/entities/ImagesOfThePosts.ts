@@ -20,11 +20,11 @@ class ImagesOfThePosts {
   imagesOfThePosts: string;
 
   @ManyToOne(() => Posts)
-  @JoinColumn({ name: 'postID' })
+  @JoinColumn({ name: 'post_id' })
   posts: Posts;
 
   @Column()
-  postID: string;
+  post_id: string;
 
   @CreateDateColumn()
   created_at: Date;
