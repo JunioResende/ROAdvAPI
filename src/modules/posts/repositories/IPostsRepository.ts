@@ -12,6 +12,8 @@ interface IPostsRepository {
   findPosts(post_title: string): Promise<Posts[]>;
 
   updatePost({ id, post_title, posting }: IUpdatePostDTO): Promise<void>;
+
+  deletePost(id: string): Promise<void>;
 }
 
 export { IPostsRepository };

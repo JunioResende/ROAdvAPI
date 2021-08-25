@@ -3,6 +3,7 @@ import multer from 'multer';
 
 import uploadConfig from '@config/upload/upload';
 import { CreatePostController } from '@modules/posts/useCases/createPost/CreatePostController';
+import { DeletePostController } from '@modules/posts/useCases/deletePost/DeletePostController';
 import { FindPostsController } from '@modules/posts/useCases/findPosts/FindPostsController';
 import { ShowPostController } from '@modules/posts/useCases/showPost/ShowPostController';
 import { UpdatePostController } from '@modules/posts/useCases/updatePost/UpdatePostController';
@@ -10,6 +11,7 @@ import { UploadImagesOfThePostsController } from '@modules/posts/useCases/upload
 
 import { ensureAuth } from '../middlewares/ensureAuth';
 import { ensureUserAdmin } from '../middlewares/ensureUserAdmin';
+import { ensureSuperUserAdmin } from '../middlewares/ensureUserSuperAdmin';
 
 const postsRoutes = Router();
 
@@ -28,6 +30,9 @@ const updatePostController = new UpdatePostController();
 
 // Upload / Delete Images Of The Posts
 const uploadImagesOfThePostsController = new UploadImagesOfThePostsController();
+
+// Delete Post
+const deletePostController = new DeletePostController();
 
 // Routes
 // Create Posts
@@ -58,6 +63,14 @@ postsRoutes.post(
   ensureUserAdmin,
   uploadImagesOfThePosts.array('imageOfThePosts'),
   uploadImagesOfThePostsController.handle,
+);
+
+// Delete Post
+postsRoutes.delete(
+  '/deletePost/:id',
+  ensureAuth,
+  ensureSuperUserAdmin,
+  deletePostController.handle,
 );
 
 export { postsRoutes };

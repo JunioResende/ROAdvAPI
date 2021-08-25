@@ -55,6 +55,15 @@ class PostsRepository implements IPostsRepository {
       .setParameters({ id })
       .execute();
   }
+
+  async deletePost(id: string): Promise<void> {
+    await this.repository
+      .createQueryBuilder()
+      .delete()
+      .where('id = :id')
+      .setParameters({ id })
+      .execute();
+  }
 }
 
 export { PostsRepository };
