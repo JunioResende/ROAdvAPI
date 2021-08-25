@@ -18,6 +18,12 @@ class PostsRepository implements IPostsRepository {
     await this.repository.save(posts);
   }
 
+  async findById(id: string): Promise<Posts> {
+    const posts = await this.repository.findOne(id);
+
+    return posts;
+  }
+
   async findByTitle(postTitle: string): Promise<Posts> {
     const posts = await this.repository.findOne({ postTitle });
 

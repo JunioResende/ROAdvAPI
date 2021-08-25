@@ -20,11 +20,6 @@ export class createPostsTable1629889954655 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'featuredImage',
-            type: 'varchar',
-            isNullable: true,
-          },
-          {
             name: 'userID',
             type: 'uuid',
           },
