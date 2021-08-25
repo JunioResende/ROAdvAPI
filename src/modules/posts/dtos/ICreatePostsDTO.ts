@@ -1,8 +1,7 @@
 interface ICreatePostsDTO {
   id?: string;
-  postTitle: string;
+  post_title: string;
   posting: string;
-  featuredImage?: string;
   userID: string;
 }
 

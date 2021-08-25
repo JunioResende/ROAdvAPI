@@ -12,18 +12,18 @@ class CreatePostUseCase {
   ) {}
 
   async execute({
-    postTitle,
+    post_title,
     posting,
     userID,
   }: ICreatePostsDTO): Promise<void> {
-    const postExists = await this.postsRepository.findByTitle(postTitle);
+    const postExists = await this.postsRepository.findByTitle(post_title);
 
     if (postExists) {
       throw new AppError('There is already a post with this title');
     }
 
     await this.postsRepository.create({
-      postTitle,
+      post_title,
       posting,
       userID,
     });

@@ -12,8 +12,12 @@ class PostsRepository implements IPostsRepository {
     this.repository = getRepository(Posts);
   }
 
-  async create({ postTitle, posting, userID }: ICreatePostsDTO): Promise<void> {
-    const posts = this.repository.create({ postTitle, posting, userID });
+  async create({
+    post_title,
+    posting,
+    userID,
+  }: ICreatePostsDTO): Promise<void> {
+    const posts = this.repository.create({ post_title, posting, userID });
 
     await this.repository.save(posts);
   }
@@ -24,8 +28,20 @@ class PostsRepository implements IPostsRepository {
     return posts;
   }
 
-  async findByTitle(postTitle: string): Promise<Posts> {
-    const posts = await this.repository.findOne({ postTitle });
+  async findByTitle(post_title: string): Promise<Posts> {
+    const posts = await this.repository.findOne({ post_title });
+
+    return posts;
+  }
+
+  async findPosts(post_title: string): Promise<Posts[]> {
+    const postsQuery = this.repository.createQueryBuilder();
+
+    if (post_title) {
+      postsQuery.andWhere('post_title = :post_title', { post_title });
+    }
+
+    const posts = await postsQuery.getMany();
 
     return posts;
   }

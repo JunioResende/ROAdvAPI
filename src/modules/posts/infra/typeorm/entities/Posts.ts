@@ -17,13 +17,10 @@ class Posts {
   id: string;
 
   @Column()
-  postTitle: string;
+  post_title: string;
 
   @Column()
   posting: string;
-
-  @Column()
-  featuredImage: string;
 
   @ManyToOne(() => Users)
   @JoinColumn({ name: 'userID' })

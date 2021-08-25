@@ -12,7 +12,7 @@ export class createPostsTable1629889954655 implements MigrationInterface {
             isPrimary: true,
           },
           {
-            name: 'postTitle',
+            name: 'post_title',
             type: 'varchar',
           },
           {
