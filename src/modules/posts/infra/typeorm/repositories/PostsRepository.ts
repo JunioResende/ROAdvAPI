@@ -1,6 +1,7 @@
 import { getRepository, Repository } from 'typeorm';
 
 import { ICreatePostsDTO } from '@modules/posts/dtos/ICreatePostsDTO';
+import { IUpdatePostDTO } from '@modules/posts/dtos/IUpdatePostDTO';
 import { IPostsRepository } from '@modules/posts/repositories/IPostsRepository';
 
 import { Posts } from '../entities/Posts';
@@ -44,6 +45,15 @@ class PostsRepository implements IPostsRepository {
     const posts = await postsQuery.getMany();
 
     return posts;
+  }
+
+  async updatePost({ id, post_title, posting }: IUpdatePostDTO): Promise<void> {
+    await this.repository
+      .createQueryBuilder()
+      .update({ post_title, posting })
+      .where('id = :id')
+      .setParameters({ id })
+      .execute();
   }
 }
 

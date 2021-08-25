@@ -5,6 +5,7 @@ import uploadConfig from '@config/upload/upload';
 import { CreatePostController } from '@modules/posts/useCases/createPost/CreatePostController';
 import { FindPostsController } from '@modules/posts/useCases/findPosts/FindPostsController';
 import { ShowPostController } from '@modules/posts/useCases/showPost/ShowPostController';
+import { UpdatePostController } from '@modules/posts/useCases/updatePost/UpdatePostController';
 import { UploadImagesOfThePostsController } from '@modules/posts/useCases/uploadImageOfThePosts/UploadImagesOfThePostsController';
 
 import { ensureAuth } from '../middlewares/ensureAuth';
@@ -24,6 +25,8 @@ const uploadImagesOfThePostsController = new UploadImagesOfThePostsController();
 
 const showPostController = new ShowPostController();
 
+const updatePostController = new UpdatePostController();
+
 postsRoutes.post('/', ensureAuth, ensureUserAdmin, createPostController.handle);
 
 postsRoutes.get(
@@ -42,5 +45,12 @@ postsRoutes.post(
 );
 
 postsRoutes.get('/showPost/:id', showPostController.handle);
+
+postsRoutes.put(
+  '/updatePost/:id',
+  ensureAuth,
+  ensureUserAdmin,
+  updatePostController.handle,
+);
 
 export { postsRoutes };
