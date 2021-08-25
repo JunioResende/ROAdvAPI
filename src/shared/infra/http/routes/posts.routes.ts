@@ -6,6 +6,7 @@ import { CreatePostController } from '@modules/posts/useCases/createPost/CreateP
 import { DeletePostController } from '@modules/posts/useCases/deletePost/DeletePostController';
 import { FindImagesOfThePostsController } from '@modules/posts/useCases/findImagesOfThePosts/FindImagesOfThePostsController';
 import { FindPostsController } from '@modules/posts/useCases/findPosts/FindPostsController';
+import { ShowImageOfThePostController } from '@modules/posts/useCases/showImageOfThePost/ShowImageOfThePostController';
 import { ShowPostController } from '@modules/posts/useCases/showPost/ShowPostController';
 import { UpdatePostController } from '@modules/posts/useCases/updatePost/UpdatePostController';
 import { UploadImagesOfThePostsController } from '@modules/posts/useCases/uploadImageOfThePosts/UploadImagesOfThePostsController';
@@ -34,6 +35,7 @@ const uploadImagesOfThePostsController = new UploadImagesOfThePostsController();
 
 // Find / Show Image Of The Posts
 const findImagesOfThePostsController = new FindImagesOfThePostsController();
+const showImageOfThePostController = new ShowImageOfThePostController();
 
 // Delete Post
 const deletePostController = new DeletePostController();
@@ -73,6 +75,11 @@ postsRoutes.post(
 postsRoutes.get(
   '/findImagesOfThePost/:id',
   findImagesOfThePostsController.handle,
+);
+
+postsRoutes.get(
+  '/showImagesOfThePost/:id',
+  showImageOfThePostController.handle,
 );
 
 // Delete Post

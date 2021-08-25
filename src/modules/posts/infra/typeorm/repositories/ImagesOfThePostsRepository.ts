@@ -16,6 +16,12 @@ class ImagesOfThePostsRepository implements IImagesOfThePostsRepository {
     await this.repository.save(image);
   }
 
+  async findById(id: string): Promise<ImagesOfThePosts> {
+    const imageOfThePost = await this.repository.findOne(id);
+
+    return imageOfThePost;
+  }
+
   async findByPostId(post_id: string): Promise<ImagesOfThePosts[]> {
     const imagesOfThePosts = await this.repository.find({ post_id });
 
