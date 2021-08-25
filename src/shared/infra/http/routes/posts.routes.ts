@@ -16,19 +16,24 @@ const postsRoutes = Router();
 const uploadImagesOfThePosts = multer(
   uploadConfig.upload(`./tmp/imagesOfThePosts`),
 );
-
+// Create Posts
 const createPostController = new CreatePostController();
 
+// Find / Show Posts
 const findPostsController = new FindPostsController();
-
-const uploadImagesOfThePostsController = new UploadImagesOfThePostsController();
-
 const showPostController = new ShowPostController();
 
+// Update Posts
 const updatePostController = new UpdatePostController();
 
+// Upload / Delete Images Of The Posts
+const uploadImagesOfThePostsController = new UploadImagesOfThePostsController();
+
+// Routes
+// Create Posts
 postsRoutes.post('/', ensureAuth, ensureUserAdmin, createPostController.handle);
 
+// Find / Show Posts
 postsRoutes.get(
   '/findPosts',
   ensureAuth,
@@ -36,21 +41,23 @@ postsRoutes.get(
   findPostsController.handle,
 );
 
+postsRoutes.get('/showPost/:id', showPostController.handle);
+
+// Update Posts
+postsRoutes.put(
+  '/updatePost/:id',
+  ensureAuth,
+  ensureUserAdmin,
+  updatePostController.handle,
+);
+
+// Upload / Delete Images Of The Posts
 postsRoutes.post(
   '/uploadImagesOfThePosts/:id',
   ensureAuth,
   ensureUserAdmin,
   uploadImagesOfThePosts.array('imageOfThePosts'),
   uploadImagesOfThePostsController.handle,
-);
-
-postsRoutes.get('/showPost/:id', showPostController.handle);
-
-postsRoutes.put(
-  '/updatePost/:id',
-  ensureAuth,
-  ensureUserAdmin,
-  updatePostController.handle,
 );
 
 export { postsRoutes };
