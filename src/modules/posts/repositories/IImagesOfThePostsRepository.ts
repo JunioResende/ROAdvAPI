@@ -6,6 +6,8 @@ interface IImagesOfThePostsRepository {
   findById(id: string): Promise<ImagesOfThePosts>;
 
   findByPostId(post_id: string): Promise<ImagesOfThePosts[]>;
+
+  deleteImageOfThePost(id: string): Promise<void>;
 }
 
 export { IImagesOfThePostsRepository };

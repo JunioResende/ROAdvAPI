@@ -27,6 +27,15 @@ class ImagesOfThePostsRepository implements IImagesOfThePostsRepository {
 
     return imagesOfThePosts;
   }
+
+  async deleteImageOfThePost(id: string): Promise<void> {
+    await this.repository
+      .createQueryBuilder()
+      .delete()
+      .where('id = :id')
+      .setParameters({ id })
+      .execute();
+  }
 }
 
 export { ImagesOfThePostsRepository };

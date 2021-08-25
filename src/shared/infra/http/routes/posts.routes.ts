@@ -3,6 +3,7 @@ import multer from 'multer';
 
 import uploadConfig from '@config/upload/upload';
 import { CreatePostController } from '@modules/posts/useCases/createPost/CreatePostController';
+import { DeleteImageOfThePostController } from '@modules/posts/useCases/deleteImageOfThePost/DeleteImageOfThePostController';
 import { DeletePostController } from '@modules/posts/useCases/deletePost/DeletePostController';
 import { FindImagesOfThePostsController } from '@modules/posts/useCases/findImagesOfThePosts/FindImagesOfThePostsController';
 import { FindPostsController } from '@modules/posts/useCases/findPosts/FindPostsController';
@@ -32,6 +33,7 @@ const updatePostController = new UpdatePostController();
 
 // Upload / Delete Images Of The Posts
 const uploadImagesOfThePostsController = new UploadImagesOfThePostsController();
+const deleteImageOfThePostController = new DeleteImageOfThePostController();
 
 // Find / Show Image Of The Posts
 const findImagesOfThePostsController = new FindImagesOfThePostsController();
@@ -69,6 +71,13 @@ postsRoutes.post(
   ensureUserAdmin,
   uploadImagesOfThePosts.array('imageOfThePosts'),
   uploadImagesOfThePostsController.handle,
+);
+
+postsRoutes.delete(
+  '/deleteImageOfThePost/:id',
+  ensureAuth,
+  ensureUserAdmin,
+  deleteImageOfThePostController.handle,
 );
 
 // Find / Show Image Of The Posts
